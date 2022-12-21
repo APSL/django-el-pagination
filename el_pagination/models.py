@@ -2,8 +2,13 @@
 from __future__ import unicode_literals
 
 from django.template import loader
-from django.utils.encoding import force_str, iri_to_uri
 
+try:
+    from django.utils.encoding import force_str
+except ImportError:
+    from django.utils.encoding import force_text as force_str
+
+from django.utils.encoding import iri_to_uri
 from el_pagination import loaders, settings, utils
 
 # Page templates cache.

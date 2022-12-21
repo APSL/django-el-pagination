@@ -5,7 +5,13 @@ import re
 
 from django import template
 from django.http import Http404
-from django.utils.encoding import force_str, iri_to_uri
+
+try:
+    from django.utils.encoding import force_str
+except ImportError:
+    from django.utils.encoding import force_text as force_str
+
+from django.utils.encoding import iri_to_uri
 
 from el_pagination import models, settings, utils
 from el_pagination.paginators import DefaultPaginator, EmptyPage, LazyPaginator
